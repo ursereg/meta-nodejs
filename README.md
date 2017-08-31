@@ -2,13 +2,13 @@ meta-nodejs <img src="https://github.com/nodejs/nodejs.org/raw/master/static/ima
 ===========
 
 OpenEmbedded layer for latest [Node.js](https://nodejs.org/ "Node.js") releases.
- 
+
 :information_source: *As an official extension of this layer, installing [`meta-nodejs-contrib`](https://github.com/imyller/meta-nodejs-contrib) is highly recommended for community contributed Node.js based package recipes and Bitbake helper classes.*
 
 ## Node.js releases
 
  * ![Current 7](https://img.shields.io/badge/Node.js%20Current-7.10.0-green.svg)
- * ![LTS 6](https://img.shields.io/badge/Node.js%20LTS-6.10.3-blue.svg)
+ * ![LTS 6](https://img.shields.io/badge/Node.js%20LTS-6.11.2-blue.svg)
  * ![Maintenance 4](https://img.shields.io/badge/Node.js%20Maintenance-4.8.3-B0C4DE.svg)
  * ![End of life 0.12](https://img.shields.io/badge/Node.js%20End%20of%20Life-0.12.18-lightgray.svg)
  * ![End of life 0.10](https://img.shields.io/badge/Node.js%20End%20of%20Life-0.10.48-lightgray.svg)
@@ -53,7 +53,7 @@ Installation
 Layer installation varies depending on your OpenEmbedded distribution. These instructions are generic.
 
 1. Fetch `meta-nodejs` layer from `https://github.com/imyller/meta-nodejs.git`
-	
+
 2. Add `meta-nodejs` layer to `EXTRALAYERS` in `conf/bblayers.conf`. For example:
 
 	```bitbake
@@ -61,7 +61,7 @@ Layer installation varies depending on your OpenEmbedded distribution. These ins
 			${TOPDIR}/sources/meta-nodejs \
 		"
 	```
-	
+
 ## Recommended layers
 
 As an official extension of this layer, installing [`meta-nodejs-contrib`](https://github.com/imyller/meta-nodejs-contrib) is highly recommended for community contributed Node.js based package recipes and Bitbake helper classes.
@@ -90,7 +90,7 @@ Add Node.js as a dependency in recipe with `RDEPENDS` (for runtime) or `DEPENDS`
 
 Inherit `npm-install` build task class in your recipe.
 
-Bitbake classes 
+Bitbake classes
 ===============
 
 `meta-nodejs` layer adds few Node.js related helper classes.
@@ -98,10 +98,10 @@ Bitbake classes
 ## `npm-base` class
 
 `npm-base` class defines following functions:
- 
+
   * `oe_runnpm`: call cross-compiling `npm`
   * `oe_runnpm_native`: call native-compiling `npm`
-  
+
 For example:
 
 ```bitbake
@@ -134,7 +134,7 @@ You can disable one or more of these build tasks in the recipe with `do_<tasknam
 
 ### Variables
 
- * `NPM_INSTALL_FLAGS`: Extra command line arguments for `npm` calls made in `npm_install` task 
+ * `NPM_INSTALL_FLAGS`: Extra command line arguments for `npm` calls made in `npm_install` task
  * `NPM_INSTALL`: Parameters for `npm install` command (such as specific package names)
 
 ## `npm-install-global` class
