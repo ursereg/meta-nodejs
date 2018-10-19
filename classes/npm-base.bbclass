@@ -47,6 +47,7 @@ oe_runnpm() {
 	fi
 
 	export NPM_CONFIG_DEV="false"
+	NPM_VERSION=$(${NPM} -v)
 
 	bbnote NPM target architecture: ${NPM_ARCH}
 	bbnote NPM home directory: ${NPM_HOME_DIR}
@@ -64,7 +65,14 @@ oe_runnpm() {
 
 	export HOME="${NPM_HOME_DIR}"
 
-	${NPM} cache clean || die "oe_runnpm failed (cache clean)"
+	bbnote NPM version: ${NPM_VERSION}
+
+	NPM_VERSION_MAJOR=`echo $NPM_VERSION | cut -d. -f1`
+	if [ ${NPM_VERSION_MAJOR} -ge 5 ]; then
+		${NPM} cache verify || die "oe_runnpm failed (cache verify)"
+	else
+		${NPM} cache clean || die "oe_runnpm failed (cache clean)"
+	fi
 
 	LD="${NPM_LD}" ${NPM} --registry=${NPM_REGISTRY} ${ARCH_FLAGS} ${NPM_FLAGS} "$@" || die "oe_runnpm failed (install)"
 
@@ -107,6 +115,7 @@ oe_runnpm_native() {
 	fi
 
 	export NPM_CONFIG_DEV="false"
+	NPM_VERSION=$(${NPM} -v)
 
 	bbnote NPM native architecture: ${NPM_ARCH_NATIVE}
 	bbnote NPM home directory: ${NPM_HOME_DIR_NATIVE}
@@ -124,7 +133,12 @@ oe_runnpm_native() {
 
 	export HOME="${NPM_HOME_DIR_NATIVE}"
 
-	${NPM} cache clean || die "oe_runnpm_native failed (cache clean)"
+	NPM_VERSION_MAJOR=`echo $NPM_VERSION | cut -d. -f1`
+	if [ ${NPM_VERSION_MAJOR} -ge 5 ]; then
+		${NPM} cache verify || die "oe_runnpm failed (cache verify)"
+	else
+		${NPM} cache clean || die "oe_runnpm failed (cache clean)"
+	fi
 
 	LD="${NPM_LD_NATIVE}" ${NPM_NATIVE} --registry=${NPM_REGISTRY} ${ARCH_FLAGS} ${NPM_FLAGS_NATIVE} "$@" || die "oe_runnpm_native failed (install)"
 
