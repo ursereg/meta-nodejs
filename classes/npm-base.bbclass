@@ -39,7 +39,7 @@ oe_runnpm() {
 
 	mkdir -p "${NPM_HOME_DIR}"
 
-	if [ "${NPM_CACHE_DIR}" == "" ]; then
+	if [ "${NPM_CACHE_DIR}" = "" ]; then
 		NPM_VERSION=`${NPM} -v`
 		export NPM_CONFIG_CACHE="${DL_DIR}/npm_v${NPM_VERSION}_${TARGET_ARCH}_cache/${PF}"
 	else
@@ -99,7 +99,7 @@ oe_runnpm_native() {
 
 	mkdir -p "${NPM_HOME_DIR_NATIVE}"
 
-	if [ "${NPM_CACHE_DIR_NATIVE}" == "" ]; then
+	if [ "${NPM_CACHE_DIR_NATIVE}" = "" ]; then
 		NPM_VERSION=`${NPM} -v`
 		export NPM_CONFIG_CACHE="${DL_DIR}/npm_v${NPM_VERSION}_${TARGET_ARCH}_native/${PF}"
 	else
