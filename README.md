@@ -7,8 +7,9 @@ OpenEmbedded layer for latest [Node.js](https://nodejs.org/ "Node.js") releases.
 
 ## Node.js releases
 
- * ![Current 7](https://img.shields.io/badge/Node.js%20Current-7.10.1-green.svg)
- * ![LTS 6](https://img.shields.io/badge/Node.js%20LTS-6.11.2-blue.svg)
+ * ![Current 10](https://img.shields.io/badge/Node.js%20Current-10.12.0-green.svg)
+ * ![Active LTS 8](https://img.shields.io/badge/Node.js%20Current-8.12.0-blue.svg)
+ * ![Maintenance LTS 6](https://img.shields.io/badge/Node.js%20LTS-6.14.4-blue.svg)
  * ![Maintenance 4](https://img.shields.io/badge/Node.js%20Maintenance-4.8.3-B0C4DE.svg)
  * ![End of life 0.12](https://img.shields.io/badge/Node.js%20End%20of%20Life-0.12.18-lightgray.svg)
  * ![End of life 0.10](https://img.shields.io/badge/Node.js%20End%20of%20Life-0.10.48-lightgray.svg)
