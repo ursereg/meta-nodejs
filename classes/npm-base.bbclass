@@ -91,10 +91,10 @@ NPM_FLAGS_NATIVE_append_class-nativesdk = " --unsafe-perm"
 oe_runnpm_native() {
 
 	if [ "${NPM_ARCH_NATIVE}" != "allarch" ]; then
-                ARCH_FLAGS="--arch=${NPM_ARCH_NATIVE} --target_arch=${NPM_ARCH_NATIVE}"
-        else
-                ARCH_FLAGS=""
-        fi
+		ARCH_FLAGS="--arch=${NPM_ARCH_NATIVE} --target_arch=${NPM_ARCH_NATIVE}"
+	else
+		ARCH_FLAGS=""
+	fi
 
 	echo "/temp/" >> "${NPM_IGNORE}"
 	echo "/pseudo/" >> "${NPM_IGNORE}"
