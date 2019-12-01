@@ -29,7 +29,7 @@ ARCHFLAGS_arm = "${@bb.utils.contains('TUNE_FEATURES', 'callconvention-hard', '-
                     '--with-arm-fpu=vfp', d), d), d)}"
 ARCHFLAGS ?= ""
 
-CROSSCONF = "--cross-compiling"
+CROSSCONF = "--cross-compiling --without-npm"
 CROSSCONF_class-native ="--no-cross-compiling"
 
 GYP_DEFINES_append_mipsel = " mips_arch_variant='r1' "
@@ -80,7 +80,9 @@ do_install_append_class-nativesdk() {
 
 do_install_append_class-target() {
   # make sure we use node from PATH instead of absolute path to sysroot
-  sed "1s^.*^#\!${bindir}/env node^g" -i ${D}${exec_prefix}/lib/node_modules/npm/bin/npm-cli.js
+  # sed "1s^.*^#\!${bindir}/env node^g" -i ${D}${exec_prefix}/lib/node_modules/npm/bin/npm-cli.js
+  # rm -r ${D}${exec_prefix}/lib/node_modules/
+  # rm -r ${D}${bindir}/npm
 }
 
 PACKAGES =+ "${PN}-npm"
